@@ -5,7 +5,10 @@
  * @param fn async function to run on each item (any result is ignored)
  * @returns a void promise
  */
-export function forEachInSequence<T>(list: T[], fn: (x: T) => Promise<unknown>): Promise<void> {
+export function forEachInSequence<T>(
+  list: T[],
+  fn: (x: T) => Promise<unknown>,
+): Promise<void> {
   const initialPromise = Promise.resolve();
   const reducer = (prom: Promise<unknown>, x: T) => {
     return prom.then(() => {
@@ -27,7 +30,10 @@ export function forEachInSequence<T>(list: T[], fn: (x: T) => Promise<unknown>):
  *
  * @see forEachInSequence
  */
-export function mapInSequence<T, R>(list: T[], fn: (x: T) => Promise<R>): Promise<R[]> {
+export function mapInSequence<T, R>(
+  list: T[],
+  fn: (x: T) => Promise<R>,
+): Promise<R[]> {
   const initialPromise = Promise.resolve([] as R[]);
   const reducer = (prom: Promise<R[]>, x: T) => {
     return prom.then((res) => {

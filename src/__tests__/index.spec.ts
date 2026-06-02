@@ -14,7 +14,9 @@ describe("forEachInSequence", () => {
 describe("mapInSequence, returning", () => {
   it("should run a function on each item in a sequence", async () => {
     const sequence = [1, 2, 3];
-    const result = await mapInSequence(sequence, (item) => Promise.resolve(item + 1));
+    const result = await mapInSequence(sequence, (item) =>
+      Promise.resolve(item + 1),
+    );
     expect(result).toEqual([2, 3, 4]);
   });
 });
